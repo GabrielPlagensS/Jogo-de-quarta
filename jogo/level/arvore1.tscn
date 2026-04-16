@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cgwyoc5wrwyfe"]
+
+[ext_resource type="Script" uid="uid://b7p5ht5xvw25x" path="res://level/arvore_1.gd" id="1_u1u8c"]
+[ext_resource type="Texture2D" uid="uid://byxwe45lc3nxs" path="res://assets/Sprites/tree1.png" id="1_uf2qi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uf2qi"]
+radius = 39.012817
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u1u8c"]
+radius = 14.0
+
+[node name="Arvore1" type="Node2D" unique_id=1460813483]
+script = ExtResource("1_u1u8c")
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=176726967]
+texture = ExtResource("1_uf2qi")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=144053985]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1849366135]
+position = Vector2(1, -11)
+shape = SubResource("CircleShape2D_uf2qi")
+debug_color = Color(0.96595424, 0.9928238, 1, 0.41960785)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1230511325]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2040710503]
+visibility_layer = 2
+position = Vector2(0, 40)
+shape = SubResource("CircleShape2D_u1u8c")
+debug_color = Color(1.540184e-06, 0.42737126, 0.48580098, 0.41960785)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

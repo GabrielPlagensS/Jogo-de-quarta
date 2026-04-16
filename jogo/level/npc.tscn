@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://7fuvajma8arw"]
+
+[ext_resource type="Texture2D" uid="uid://b57v1le4dsq14" path="res://assets/Personagens/SpriteSheets/npc_10_spritesheet.png" id="1_ltp75"]
+[ext_resource type="Script" uid="uid://c6jmemkk82wy3" path="res://level/npc.gd" id="1_pk5cc"]
+[ext_resource type="Texture2D" uid="uid://uuvopcvmdgni" path="res://assets/Sprites/dialog.png" id="3_xt7nd"]
+[ext_resource type="Texture2D" uid="uid://claaw1cvhy8yt" path="res://assets/Sprites/dialog1.png" id="4_t5pfn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkmi3"]
+atlas = ExtResource("1_ltp75")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mwd7"]
+atlas = ExtResource("1_ltp75")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pk5cc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkmi3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mwd7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ltp75"]
+radius = 16.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bcxwv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xt7nd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_t5pfn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pk5cc"]
+radius = 6.0
+
+[node name="Npc" type="CharacterBody2D" unique_id=1576711793]
+script = ExtResource("1_pk5cc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=776218739]
+sprite_frames = SubResource("SpriteFrames_pk5cc")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1842815764 groups=["dialogo_area"]]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=690672160]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_ltp75")
+
+[node name="fala" type="AnimatedSprite2D" parent="." unique_id=6237080]
+position = Vector2(0, -19)
+sprite_frames = SubResource("SpriteFrames_bcxwv")
+frame_progress = 0.369129
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1858195864 groups=["dialogo_area"]]
+position = Vector2(0, 15)
+shape = SubResource("CircleShape2D_pk5cc")
+debug_color = Color(0.8364243, 0.9269709, 0.9992277, 0.41960785)
